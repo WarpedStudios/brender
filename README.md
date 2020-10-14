@@ -3,6 +3,7 @@ A Batch program for Blender command-line rendering.
 # Features
 -	Compatible with Windows 7 or above. 
 - For Blender 2.90 or above.
+- Notification when rendering has begun and finished (utilizing PowerShell).
 -	Notification of errors when they occur.
 # Options
 -	Still frame or animation.
