@@ -1,5 +1,7 @@
 :startall
 @echo off
+mode 100,40
+title brender v1.01 - blender2.90
 goto title
 
 :title
@@ -89,12 +91,12 @@ echo.
 echo Job added to CMD.
 echo Make sure the job info below is correct.
 echo.
-echo     ----------------------------------------------------------------------------------------------------
+echo     -----------------------------------------------------------------------------------------------
 echo      JOB INFORMATION
 echo      Blender file = %file%
 echo      Render engine = %rengine%
 echo      Frame = %sframe%
-echo     ----------------------------------------------------------------------------------------------------
+echo     -----------------------------------------------------------------------------------------------
 goto blenderdir-still
 
 :blenderdir-still
@@ -148,10 +150,30 @@ goto rendercmd-still
 :rendercmd-still
 cd %blenderdir%
 echo.
-echo ---------------------------------BLENDER---------------------------------
+set psdir=%USERPROFILE%\WarpedStudios\
+echo Write-Host '---POWERSHELL---' -Fore white > %psdir%\msg1.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Windows.Forms") >> %psdir%\msg1.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Drawing") >> %psdir%\msg1.tmp.ps1
+echo $notify = new-object system.windows.forms.notifyicon >> %psdir%\msg1.tmp.ps1
+echo $notify.icon = [System.Drawing.SystemIcons]::Information >> %psdir%\msg1.tmp.ps1
+echo $notify.visible = $true >> %psdir%\msg1.tmp.ps1
+echo $notify.showballoontip(10,"Blender CMD Render","Rendering has finished",[system.windows.forms.tooltipicon]::None) >> %psdir%\msg1.tmp.ps1
+powershell -Command "%psdir%\msg1.tmp.ps1"
+del %USERPROFILE%\WarpedStudios\msg1.tmp.ps1
+echo ----------------------------------------------BLENDER----------------------------------------------
 blender -b %file% -o %rfolderstill%%suffix-still% -E %rengine% -f %sframe%
 echo.
-echo -------------------------------------------------------------------------
+set psdir=%USERPROFILE%\WarpedStudios\
+echo Write-Host '---POWERSHELL---' -Fore white > %psdir%\msg2.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Windows.Forms") >> %psdir%\msg2.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Drawing") >> %psdir%\msg2.tmp.ps1
+echo $notify = new-object system.windows.forms.notifyicon >> %psdir%\msg2.tmp.ps1
+echo $notify.icon = [System.Drawing.SystemIcons]::Information >> %psdir%\msg2.tmp.ps1
+echo $notify.visible = $true >> %psdir%\msg2.tmp.ps1
+echo $notify.showballoontip(10,"Blender CMD Render","Rendering has finished",[system.windows.forms.tooltipicon]::None) >> %psdir%\msg2.tmp.ps1
+powershell -Command "%psdir%\msg2.tmp.ps1"
+del %USERPROFILE%\WarpedStudios\msg2.tmp.ps1
+echo ---------------------------------------------------------------------------------------------------
 echo.
 echo Job complete!
 echo.
@@ -163,13 +185,13 @@ echo.
 echo Job added!
 echo Make sure the job info below is correct.
 echo.
-echo     ----------------------------------------------------------------------------------------------------
+echo     -----------------------------------------------------------------------------------------------
 echo      JOB INFORMATION
 echo      Blender file = %file%
 echo      Render engine = %rengine%
 echo      Starting frame = %start%
 echo      Ending frame = %end%
-echo     ----------------------------------------------------------------------------------------------------
+echo     -----------------------------------------------------------------------------------------------
 goto blenderdir-ani
 
 :blenderdir-ani
@@ -224,10 +246,30 @@ goto rendercmd-ani
 :rendercmd-ani
 cd %blenderdir%
 echo.
-echo ---------------------------------BLENDER---------------------------------
+set psdir=%USERPROFILE%\WarpedStudios\
+echo Write-Host '---POWERSHELL---' -Fore white > %psdir%\msg1.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Windows.Forms") >> %psdir%\msg1.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Drawing") >> %psdir%\msg1.tmp.ps1
+echo $notify = new-object system.windows.forms.notifyicon >> %psdir%\msg1.tmp.ps1
+echo $notify.icon = [System.Drawing.SystemIcons]::Information >> %psdir%\msg1.tmp.ps1
+echo $notify.visible = $true >> %psdir%\msg1.tmp.ps1
+echo $notify.showballoontip(10,"Blender CMD Render","Rendering has finished",[system.windows.forms.tooltipicon]::None) >> %psdir%\msg1.tmp.ps1
+powershell -Command "%psdir%\msg1.tmp.ps1"
+del %USERPROFILE%\WarpedStudios\msg1.tmp.ps1
+echo ----------------------------------------------BLENDER----------------------------------------------
 blender -b %file% -E %rengine% -o %rfolderani%%suffix-ani% -s %start% -e %end% -a
 echo.
-echo -------------------------------------------------------------------------
+set psdir=%USERPROFILE%\WarpedStudios\
+echo Write-Host '---POWERSHELL---' -Fore white > %psdir%\msg2.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Windows.Forms") >> %psdir%\msg2.tmp.ps1
+echo [reflection.assembly]::loadwithpartialname("System.Drawing") >> %psdir%\msg2.tmp.ps1
+echo $notify = new-object system.windows.forms.notifyicon >> %psdir%\msg2.tmp.ps1
+echo $notify.icon = [System.Drawing.SystemIcons]::Information >> %psdir%\msg2.tmp.ps1
+echo $notify.visible = $true >> %psdir%\msg2.tmp.ps1
+echo $notify.showballoontip(10,"Blender CMD Render","Rendering has finished",[system.windows.forms.tooltipicon]::None) >> %psdir%\msg2.tmp.ps1
+powershell -Command "%psdir%\msg2.tmp.ps1"
+del %USERPROFILE%\WarpedStudios\msg2.tmp.ps1
+echo ---------------------------------------------------------------------------------------------------
 echo.
 echo Job complete!
 echo.
