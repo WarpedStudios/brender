@@ -1,4 +1,4 @@
-# brender
+# bRender
 A Batch program for Blender command-line rendering.
 # Features
 -	Compatible with Windows 7 or above. 
